@@ -1,7 +1,9 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <aside class="alert alert-danger">
+    <%= devise_error_messages! %>
+  </aside>
 
   <div class="form-group">
     <%= f.label :email %><br />
