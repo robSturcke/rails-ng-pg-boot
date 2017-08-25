@@ -47,6 +47,10 @@ var CustomerSearchComponent = Component({
   '
 }).Class({
   constructor: function() {
+    this.keywords = null;
+  },
+  search: function() {
+    alert("Searched for: " + this.keywords);
   }
 });
 
