@@ -20,8 +20,8 @@ var CustomerSearchComponent = Component({
              class="form-control input-lg" \
              bindon-ngModel="keywords">\
       <span class="input-group-btn"> \
-        <input type="submit" value="Find Customers"\
-               class="btn btn-primary btn-lg">\
+        <input type="submit" value="Find Customers" \
+               class="btn btn-primary btn-lg"> \
       </span> \
     </div> \
   </form> \
@@ -31,7 +31,8 @@ var CustomerSearchComponent = Component({
     <h1 class="h3">Results</h1> \
   </header> \
   <ol class="list-group"> \
-    <li class="list-group-item clearfix"> \
+    <li *ngFor="let customer of customers" \
+        class="list-group-item clearfix"> \
       <h3 class="pull-right"> \
         <small class="text-uppercase">Joined</small> \
         2016-01-01\
