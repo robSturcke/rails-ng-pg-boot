@@ -54,21 +54,15 @@ var CustomerSearchComponent = Component({
 </header> \
 <section class="search-form"> \
   <form> \
-    <div class="input-group input-group-lg"> \
-      <label for="keywords" class="sr-only">Keywords></label> \
-      <input type="text" id="keywords" name="keywords" \
-             placeholder="First Name, Last Name, or Email Address"\
-             class="form-control input-lg" \
-             bindon-ngModel="keywords"> \
-      <span class="input-group-btn"> \
-        <input type="submit" value="Find Customers"\
-         class="btn btn-primary btn-lg" \
-         on-click="search()"> \
-      </span> \
-    </div> \
+    <label for="keywords" class="sr-only">Keywords></label> \
+    <input type="text" id="keywords" name="keywords" \
+           placeholder="First Name, Last Name, or Email Address"\
+           bind-ngModel="keywords" \
+           on-ngModelChange="search($event)" \
+           class="form-control input-lg">\
   </form> \
 </section> \
-<section class="search-results"> \
+<section class="search-results" *ngIf="customers"> \
   <header> \
     <h1 class="h3">Results</h1> \
   </header> \
