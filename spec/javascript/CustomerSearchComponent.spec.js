@@ -52,8 +52,11 @@ describe("CustomerSearchComponent", function() {
         td.when(observable.subscribe(
           td.callback(response),
           tdmatcvhers.isA(Function))).thenReturn();
-          
+
         mockHttp = td.object(["get"]);
+
+        td.when(mockHttp.get("/customers.json?keywords=pat")).thenReturn(observable);
+        
         component = new CustomerSearchComponent(mockHttp);
       });
       describe("A successful search", function() {
