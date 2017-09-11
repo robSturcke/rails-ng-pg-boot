@@ -47,6 +47,12 @@ describe("CustomerSearchComponent", function() {
       beforeEach(function() {
         var respone = td.object(["json"]);
         td.when(response.json()).thenReturn({ customers: customers });
+
+        var observable = td.object(["subscribe"]);
+        td.when(observable.subscribe(
+          td.callback(response),
+          tdmatcvhers.isA(Function))).thenReturn();
+          
         mockHttp = td.object(["get"]);
         component = new CustomerSearchComponent(mockHttp);
       });
