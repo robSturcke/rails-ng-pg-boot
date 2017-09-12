@@ -71,15 +71,19 @@ var routing = RouterModule.forRoot(
 
 var CustomerAppModule = NgModule({
 
-  
+
   imports:      [
     BrowserModule,
     FormsModule,
     HttpModule,
     router
   ],
-  declarations: [ CustomerSearchComponent ],
-  bootstrap:    [ CustomerSearchComponent ]
+  declarations: [
+    CustomerSearchComponent,
+    CustomerDetailsComponent,
+    AppComponent
+  ],
+  bootstrap:    [ AppComponent ]
 })
 .Class({
   constructor: function() {}
