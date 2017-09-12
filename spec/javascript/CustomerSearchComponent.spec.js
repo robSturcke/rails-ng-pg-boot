@@ -2,10 +2,20 @@ import "./SpecHelper";
 import { CustomerSearchComponent } from "CustomerSearchComponent";
 import td from "testdouble/dist/testdouble";
 
+var component = null;
+
 describe("CustomerSearchComponent", function() {
+  beforeEach(function() {
+    component = new CustomerSearchComponent();
+  });
+
   describe("initial state", function() {
-    it("sets customers to null");
-    it("sets keywords to the empty string");
+    it("sets customers to null", function() {
+      expect(component.customers).toBe(null);
+    });
+    it("sets keywords to the empty string", function() {
+      expect(component.keywords).toBe("");
+    });
   });
 
   describe("search", function() {
@@ -15,7 +25,7 @@ describe("CustomerSearchComponent", function() {
       component = new CustomerSearchComponent(mockHttp);
     });
     describe("A search for 'pa', less than three characters", function() {
-      it("sets the keywords to be 'pa'", function() {
+      it("sets the keywords to be 'pa'",function() {
         component.search("pa");
         expect(component.keywords).toBe("pa");
       });
@@ -45,13 +55,13 @@ describe("CustomerSearchComponent", function() {
         },
       ];
       beforeEach(function() {
-        var respone = td.object(["json"]);
+        var response = td.object(["json"]);
         td.when(response.json()).thenReturn({ customers: customers });
 
         var observable = td.object(["subscribe"]);
         td.when(observable.subscribe(
           td.callback(response),
-          tdmatcvhers.isA(Function))).thenReturn();
+          td.matchers.isA(Function))).thenReturn();
 
         mockHttp = td.object(["get"]);
 
@@ -60,7 +70,7 @@ describe("CustomerSearchComponent", function() {
         component = new CustomerSearchComponent(mockHttp);
       });
       describe("A successful search", function() {
-        it("sets the keywords to be 'pat'", function() {
+        it("sets the keywords to be 'pat'",function() {
           component.search("pat");
           expect(component.keywords).toBe("pat");
         });
@@ -83,17 +93,18 @@ describe("CustomerSearchComponent", function() {
 
           component = new CustomerSearchComponent(mockHttp);
         });
-        it("sets the keywords to be 'pat'", function() {
+        it("sets the keywords to be 'pat'",function() {
           component.search("pat");
           expect(component.keywords).toBe("pat");
         });
-        it("leaves customers as null", function () {
-          component.seach("pat");
+        it("leaves customers as null", function() {
+          component.search("pat");
           expect(component.customers).toBe(null);
         });
-        it("alerts the user with the response message", function() {
-          td.replace(window, "alert");
+        it("alerts the user with the response message",function() {
+          td.replace(window,"alert");
           component.search("pat");
+          td.verify(window.alert("There was an error!"));
         });
       });
     });
