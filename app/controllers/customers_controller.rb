@@ -2,6 +2,11 @@ class CustomersController < ApplicationController
 
   PAGE_SIZE = 10
 
+  def ng
+    @base_url = "/customers/ng"
+    render :index
+  end
+
   def index
     @page = (params[:page] || 0).to_i
 
