@@ -102,6 +102,7 @@ describe("CustomerSearchComponent", function() {
           expect(component.customers).toBe(null);
         });
         it("alerts the user with the response message",function() {
+          // ???
           td.replace(window,"alert");
           component.search("pat");
           td.verify(window.alert("There was an error!"));

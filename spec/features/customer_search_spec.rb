@@ -2,6 +2,9 @@ require 'rails_helper'
 
 feature "Customer Search" do
 
+  # setup and tests will go here...
+
+
   def create_test_user(email: , password: )
     User.create!(
       email: email,
@@ -33,6 +36,7 @@ feature "Customer Search" do
     create_customer first_name: "I.T."     , last_name: "Pat"
     create_customer first_name: "Patricia" , last_name: "Dobbs"
 
+    # This user is the one we'll expect to be listed first
     create_customer first_name: "Pat",
                     last_name: "Jones",
                     email: "pat123@somewhere.net"
@@ -41,6 +45,7 @@ feature "Customer Search" do
   scenario "Search by Name"do
     visit "/customers"
 
+    # Login to get access to /customers
     fill_in "Email",    with: email
     fill_in "Password", with: password
     click_button "Log in"
@@ -64,6 +69,7 @@ feature "Customer Search" do
   scenario "Search by Email" do
     visit "/customers"
 
+    # Login to get access to /customers
     fill_in "Email",    with: email
     fill_in "Password", with: password
     click_button "Log in"
