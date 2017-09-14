@@ -8,6 +8,7 @@ class CustomersController < ApplicationController
   end
 
   def index
+
     @page = (params[:page] || 0).to_i
 
     if params[:keywords].present?
@@ -22,7 +23,9 @@ class CustomersController < ApplicationController
       @customers = []
     end
     respond_to do |format|
-      format.html {}
+      format.html {
+        redirect_to customers_ng_path
+      }
       format.json {
         render json: { customers: @customers }
       }
